@@ -13,14 +13,13 @@ class CreateIncidenciaTable extends Migration
      */
     public function up()
     {
-        Schema::table('incidencia', function (Blueprint $table) {
+        Schema::create('incidencia', function (Blueprint $table) {
           $table->increments('id');
           $table->string('numCli');
           $table->datetime('fecha');
           $table->integer('cantObjetos');
-          //...
-          //... completar los faltantes
-          //...
+          $table->text('descripcion');
+          $table->text('motivo');
           $table->timestamps();
         });
     }
@@ -34,6 +33,5 @@ class CreateIncidenciaTable extends Migration
     {
         //Schema::table('incidencia', function (Blueprint $table) {
         Schema::dropIfExists('incidencia');
-        });
     }
 }
