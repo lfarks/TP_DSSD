@@ -8,6 +8,7 @@ $factory->define(App\Incidencia::class, function (Faker $faker) {
         'fecha' => Carbon::now(),
         'cantObjetos' => random_int(1,100),
         'client_id' => random_int(1,10),
+        'tipo' => 'CASA',
         'descripcion' => "sadsasd sakdjksdj sajdhshjsds............................................."
     ];
 });

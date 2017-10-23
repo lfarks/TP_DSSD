@@ -15,7 +15,8 @@ class Incidencia extends Model
       'fecha' => ['required|date'],
       'cantObj' => ['required|integer'],
       'desc' => ['required|string'],
-      'motivo' => ['required|string']
+      'motivo' => ['required|string'],
+      'tipo' => ['required|string']
   ];
 
   public function client()

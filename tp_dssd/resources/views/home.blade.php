@@ -14,7 +14,9 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    You are logged in!<br>
+                    <a href="{{ route('newCli') }}"><button type = "button" class = "btn btn-default">Cargar datos de cliente</button></a>
+                    <a href="{{ route('newInc') }}"><button type = "button" class = "btn btn-default">Cargar incidencia</button></a>
                 </div>
             </div>
         </div>

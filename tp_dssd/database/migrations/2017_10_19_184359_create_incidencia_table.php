@@ -21,6 +21,7 @@ class CreateIncidenciaTable extends Migration
           $table->integer('cantObjetos');
           $table->text('descripcion');
           $table->text('motivo');
+          $table->text('tipo');
           $table->timestamps();
         });
     }

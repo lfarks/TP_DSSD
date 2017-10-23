@@ -1,30 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-@if (count(session('errors')) > 0)
-      <div class="alert alert-danger">
-        @foreach (session('errors')->all() as $error)
-          {{ $error }}<br>
-        @endforeach
-      </div>
-      @endif
+<div class="container">
+    @if (count(session('errors')) > 0)
+        <div class="alert alert-danger">
+          @foreach (session('errors')->all() as $error)
+            {{ $error }}<br>
+          @endforeach
+        </div>
+        @endif
 
-      @if (session('message'))
-      <div class="alert alert-success">
-        {{ session('message') }}
-      </div>
-      @endif
-<!-- O esto:?-->
-      @if ($errors->any())
-          <div class="alert alert-danger">
-              <ul>
-                  @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                  @endforeach
-              </ul>
-          </div>
-      @endif
-      <div class="container">
+        @if (session('message'))
+        <div class="alert alert-success">
+          {{ session('message') }}
+        </div>
+        @endif
+        @if (session('error'))
+        <div class="alert alert-danger">
+          {{ session('error') }}
+        </div>
+        @endif
           <div class="row">
               <div class="col-md-12">
                   <div class="panel panel-default">
@@ -32,8 +27,8 @@
                       <div class="panel-body">
                         {{ Form::open(array('action' => 'IncidenciaController@store')) }}
                         <div class="form-group col-sm-2">
-                          {!! Form::label('cliente', 'Cliente') !!}
-                          {!! Form::text('cliente', '', ['class' => 'form-control']) !!}
+                          {!! Form::label('tipo', 'Tipo') !!}
+                          {!! Form::select('tipo', array('CASA'=>'CASA','AUTO'=>'AUTO','OBJETO MUEBLE'=>'OBJETO MUEBLE'), ['class' => 'form-control']) !!}
                         </div>
 
                         <div class="form-group col-sm-2">
@@ -47,7 +42,7 @@
                         </div>
                         <div class="form-group col-sm-6">
                           {!! Form::label('desc', 'Descripcion') !!}
-                          {!! Form::textarea('desc', '', ['class' => 'form-control']) !!}
+                          {!! Form::textarea('desc', 'Nombre Objeto / cantidad Objeto / Descripción del incidente sobre objeto', ['class' => 'form-control']) !!}
                         </div>
 
                         <div class="form-group col-sm-6">

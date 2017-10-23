@@ -36,7 +36,8 @@ class ClientController extends Controller
                 ->withErrors($validator);
         } else {*/
         $user = Auth::user();
-        if (Client::where('user_id', '=', $user->id)){
+        $exist = Client::where('user_id', '=', $user->id)->first();
+        if (!$exist == null){
           Session::flash('error', 'Su usuario ya posee datos de cliente.');
           return Redirect::to('client/create');
         }
@@ -45,13 +46,8 @@ class ClientController extends Controller
           $cli->name = $request["nom"];
           $cli->lastname = $request["ape"];
           $cli->numCli = $request["numCli"];
-          //$cli::create($request->all());
-          //$usr = User::find($usr_id);
-          //...
-          //$cli->user()->save($user);
           $usr = User::find($user->id);
           $usr->client()->save($cli);
-          //$cli->save();
           //
 
           Session::flash('message', 'Se cargaron con exito los datos del cliente!');

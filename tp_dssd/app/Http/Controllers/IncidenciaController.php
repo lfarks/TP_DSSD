@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Session;
+use Auth;
 use App\Incidencia;
 use App\Client;
+use App\User;
 class IncidenciaController extends Controller
 {
     public function __construct()
@@ -23,19 +27,34 @@ class IncidenciaController extends Controller
     public function store(Request $request)
     {
       $validator = $request->validate([
-        'title' => 'required|unique:posts|max:255',
-        'body' => 'required',
+        'tipo' => 'required|string|max:255',
+        'fecha' => 'required|date',
+        'cantObj' => 'required|integer',
+        'desc' => 'required|string',
+        'motivo' => 'required|string',
       ]);
-      //$validator = Validator::make($request->all(), $rules);
-      if ($validator->fails()) {
-            return Redirect::to('incidencia/create')
-                ->withErrors($validator);
-        } else {
-            $cli = Client::find($numCli);
-            $cli->incidencias()->save($inc);
+      $user = Auth::user();
+      //print($user->client->numCli);
+      //$exist = Client::where('user_id', '=', $user->id)->first();
+      //if ($exist == null){
+      if ($user->client->numCli == null){
+        Session::flash('error', 'Primero debe completar sus datos de cliente para que se le asigne un numero de cliente.');
+        return Redirect::to('incidencia/create');
+      }
+      else{
+        $inc = new Incidencia;
+        $inc->tipo = $request["tipo"];
+        $inc->fecha = $request["fecha"];
+        $inc->cantObjetos = $request["cantObj"];
+        $inc->descripcion = $request["desc"];
+        $inc->motivo = $request["motivo"];
 
-            Session::flash('message', 'Reporte de incidencia cargado con exito!');
-            return Redirect::to('incidencias');
+        //$exist->incidencias()->save($inc);
+        $user->client->incidencias()->save($inc);
+        //$cli->incidencias()->save($inc);
+
+        Session::flash('message', 'Reporte de incidencia cargado con exito!');
+        return Redirect::to('incidencia/create');
       }
     }
 }
