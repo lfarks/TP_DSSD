@@ -13,9 +13,10 @@ class CreateIncidenciaTable extends Migration
      */
     public function up()
     {
-        Schema::create('incidencia', function (Blueprint $table) {
+        Schema::create('incidencias', function (Blueprint $table) {
           $table->increments('id');
-          $table->string('numCli');
+          $table->integer('client_id')->unsigned();
+          $table->foreign('client_id')->references('id')->on('clients');
           $table->datetime('fecha');
           $table->integer('cantObjetos');
           $table->text('descripcion');

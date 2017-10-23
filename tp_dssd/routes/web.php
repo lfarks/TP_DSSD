@@ -19,6 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/incidencia/create', 'IncidenciaController@create');
+Route::get('/clientes', 'ClientController@show');
+Route::get('/client/create', 'ClientController@create');
+Route::post('/client', 'ClientController@store');
 
+Route::get('/incidencias', 'incidenciaController@show');
+Route::get('/incidencia/create', 'IncidenciaController@create');
 Route::post('/incidencia', 'IncidenciaController@store');
