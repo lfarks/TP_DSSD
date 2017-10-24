@@ -25,11 +25,19 @@ class ClientController extends Controller
 
     public function store(Request $request)
     {
+      $messages = [
+        'required' => 'El campo :attribute es obligatorio.',
+        'string' => 'El campo :attribute debe ser de caracteres.',
+        'max' => 'El campo :attribute no debe excede la cantidad máxima de caracteres.',
+        'date' => 'El campo :attribute debe tener un formato de fecha válido (año-mes-día).',
+        'integer' => 'El campo :attribute debe contener sólo números.',
+        'unique' => 'El campo :attribute se encuentra duplicado, debe ser único.'
+      ];
       $validator = $request->validate([
         'nom' => 'required|string|max:100',
         'ape' => 'required|string|max:50',
         'numCli' => 'required|integer|unique:clients',
-      ]);
+      ], $messages);
       //$validator = Validator::make($request->all(), $rules);
       /*if ($validator->()) {
             return Redirect::to('client/create')

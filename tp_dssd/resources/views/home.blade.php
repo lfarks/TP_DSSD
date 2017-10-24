@@ -16,7 +16,6 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">Gestión de cuenta</div>
-
                 <div class="panel-body">
                     @if (session('status'))
                         <div class="alert alert-success">
