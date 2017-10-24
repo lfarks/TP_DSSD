@@ -29,6 +29,7 @@
                           <thead>
                               <tr>
                                   <td>Num. cliente</td>
+                                  <td>Num. expediente</td>
                                   <td>CantObjetos</td>
                                   <td>Descripcion</td>
                                   <td>Motivo</td>
@@ -40,6 +41,7 @@
                           @foreach($incidencias as $key => $value)
                               <tr>
                                   <td>{{ $num_cli }}</td>
+                                  <td>{{ $value->numExpediente }}</td>
                                   <td>{{ $value->cantObjetos }}</td>
                                   <td>{{ $value->descripcion }}</td>
                                   <td>{{ $value->motivo }}</td>
