@@ -1,11 +1,21 @@
 @extends('layouts.app')
-
+<style>
+.links > a {
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+</style>
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading">Gestión de cuenta</div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -15,9 +25,27 @@
                     @endif
 
                     You are logged in!<br>
-                    <a href="{{ route('newCli') }}"><button type="button" class="btn btn-lg btn-primary"><i class="fa fa-user" aria-hidden="true"></i> Cargar datos de cliente</button></a>
-                    <a href="{{ route('newInc') }}"><button type="button" class = "btn btn-primary">Cargar incidencia</button></a>
-                    <a href="{{ route('allInc') }}"><button type="button" class = "btn btn-default">Ver mis incidencias</button></a>
+                    <div class="col-md-4">
+                      <div class="panel panel-primary">
+                        <div class="panel-heading"><i class="fa fa-user" aria-hidden="true"></i> Cliente</div>
+                        <div class="panel-body">
+                          <div class="links">
+                            <a href="{{ route('newCli') }}"> Cargar datos de cliente</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="panel panel-success">
+                        <div class="panel-heading"><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Incidencias</div>
+                        <div class="panel-body">
+                          <div class="links">
+                            <a href="{{ route('newInc') }}">Cargar incidencia</a><br>
+                            <a href="{{ route('allInc') }}">Ver mis incidencias</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                 </div>
             </div>
         </div>

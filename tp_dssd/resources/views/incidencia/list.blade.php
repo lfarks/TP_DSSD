@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+  <a href="{{ url('/home') }}">Volver</a>
     @if (count(session('errors')) > 0)
         <div class="alert alert-danger">
           @foreach (session('errors')->all() as $error)
