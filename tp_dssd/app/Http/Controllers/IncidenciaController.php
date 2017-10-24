@@ -35,9 +35,9 @@ class IncidenciaController extends Controller
       ]);
       $user = Auth::user();
       //print($user->client->numCli);
-      //$exist = Client::where('user_id', '=', $user->id)->first();
-      //if ($exist == null){
-      if ($user->client->numCli == null){
+      $exist = Client::where('user_id', '=', $user->id)->first();
+      if ($exist == null){
+      //if ($user->client->numCli == null){
         Session::flash('error', 'Primero debe completar sus datos de cliente para que se le asigne un numero de cliente.');
         return Redirect::to('incidencia/create');
       }
@@ -48,6 +48,7 @@ class IncidenciaController extends Controller
         $inc->cantObjetos = $request["cantObj"];
         $inc->descripcion = $request["desc"];
         $inc->motivo = $request["motivo"];
+        $inc->numExpediente = random_int(1,1000000000);
 
         //$exist->incidencias()->save($inc);
         $user->client->incidencias()->save($inc);

@@ -25,7 +25,7 @@
                   <div class="panel panel-default">
                       <div class="panel-heading">Listado de incidentes del usuario</div>
                       <div class="panel-body">
-                        <table class="table table-striped table-bordered">
+                        <table class="table table-striped table-bordered table-hover">
                           <thead>
                               <tr>
                                   <td>Num. cliente</td>

@@ -15,9 +15,9 @@
                     @endif
 
                     You are logged in!<br>
-                    <a href="{{ route('newCli') }}"><button type = "button" class = "btn btn-default">Cargar datos de cliente</button></a>
-                    <a href="{{ route('newInc') }}"><button type = "button" class = "btn btn-default">Cargar incidencia</button></a>
-                    <a href="{{ route('allInc') }}"><button type = "button" class = "btn btn-default">Ver mis incidencias</button></a>
+                    <a href="{{ route('newCli') }}"><button type="button" class="btn btn-lg btn-primary"><i class="fa fa-user" aria-hidden="true"></i> Cargar datos de cliente</button></a>
+                    <a href="{{ route('newInc') }}"><button type="button" class = "btn btn-primary">Cargar incidencia</button></a>
+                    <a href="{{ route('allInc') }}"><button type="button" class = "btn btn-default">Ver mis incidencias</button></a>
                 </div>
             </div>
         </div>

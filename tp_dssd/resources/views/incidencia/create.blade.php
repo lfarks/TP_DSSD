@@ -32,6 +32,7 @@
                         </div>
 
                         <div class="form-group col-sm-2">
+                          <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
                           {!! Form::label('fecha', 'Fecha del incidente') !!}
                           {!! Form::date('fecha', \Carbon\Carbon::now(), ['class' => 'form-control']); !!}
                         </div>
@@ -41,17 +42,19 @@
                           {!! Form::number('cantObj', '', ['class' => 'form-control']) !!}
                         </div>
                         <div class="form-group col-sm-6">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
                           {!! Form::label('desc', 'Descripcion') !!}
                           {!! Form::textarea('desc', 'Nombre Objeto / cantidad Objeto / Descripción del incidente sobre objeto', ['class' => 'form-control']) !!}
                         </div>
 
                         <div class="form-group col-sm-6">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
                           {!! Form::label('motivo', 'Motivo') !!}
                           {!! Form::textarea('motivo', '', ['class' => 'form-control']) !!}
                         </div>
                         <div class="form-group col-sm-12">
                           {!! Form::submit('Enviar', ['class' => 'btn btn-success']) !!}
-                          <!--<button class="btn btn-success" type="submit">Enviar</button>-->
+                          <button class="btn btn-success"><i class="fa fa-paper-plane-o ml-1"></i> Enviar</button>
                         </div>
                         {{ Form::close() }}
                       </div>

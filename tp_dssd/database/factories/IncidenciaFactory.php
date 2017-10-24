@@ -9,6 +9,7 @@ $factory->define(App\Incidencia::class, function (Faker $faker) {
         'cantObjetos' => random_int(1,100),
         'client_id' => random_int(1,10),
         'tipo' => 'CASA',
+        'numExpediente' => random_int(1,1000000000),
         'descripcion' => "sadsasd sakdjksdj sajdhshjsds............................................."
     ];
 });
