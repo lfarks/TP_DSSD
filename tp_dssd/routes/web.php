@@ -23,6 +23,6 @@ Route::get('/clientes', 'ClientController@show')->name('allCli');
 Route::get('/client/create', 'ClientController@create')->name('newCli');
 Route::post('/client', 'ClientController@store');
 
-Route::get('/incidencias', 'incidenciaController@show')->name('allInc');
+Route::get('/incidencias', 'IncidenciaController@show')->name('allInc');
 Route::get('/incidencia/create', 'IncidenciaController@create')->name('newInc');
 Route::post('/incidencia', 'IncidenciaController@store');

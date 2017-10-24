@@ -57,4 +57,14 @@ class IncidenciaController extends Controller
         return Redirect::to('incidencia/create');
       }
     }
+
+    public function show()
+    {
+      $user = Auth::user();
+
+      //$incidencias = Incidencia::where('client_id', $user->client->numCli);
+      $incidencias = $user->client->incidencias;
+      return view('incidencia.list', ['incidencias'=> $incidencias, 'num_cli'=>$user->client->numCli]);
+      //return View::make('incidencia.list')->with('incidencias', $incidencias);
+    }
 }
