@@ -63,7 +63,7 @@ class IncidenciaController extends Controller
         //$cli->incidencias()->save($inc);
 
         Session::flash('message', 'Reporte de incidencia cargado con exito!');
-        return Redirect::to('incidencia/create');
+        return Redirect::to('incidencias');
       }
     }
 

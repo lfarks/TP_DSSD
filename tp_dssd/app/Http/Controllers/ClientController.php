@@ -8,6 +8,7 @@ use Session;
 use Auth;
 use App\Client;
 use App\User;
+use App\Role;
 class ClientController extends Controller
 {
     public function __construct()
@@ -50,12 +51,15 @@ class ClientController extends Controller
           return Redirect::to('client/create');
         }
         else{
+          $role_client = Role::where('name', 'cliente')->first();
+
           $cli = new Client;
           $cli->name = $request["nom"];
           $cli->lastname = $request["ape"];
           $cli->numCli = $request["numCli"];
           $usr = User::find($user->id);
           $usr->client()->save($cli);
+          $usr->roles()->attach($role_client);
           //
 
           Session::flash('message', 'Se cargaron con exito los datos del cliente!');
