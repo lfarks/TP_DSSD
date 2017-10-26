@@ -14,6 +14,8 @@ class ClientController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('role:empleado')->only('show');
+        $this->middleware('role:cliente')->except('show');
     }
 
     public function create()
@@ -66,5 +68,9 @@ class ClientController extends Controller
           return Redirect::to('client/create');
         }
       //}
+    }
+    public function show(Request $request)
+    {
+      return "Filtrando empleados";
     }
 }

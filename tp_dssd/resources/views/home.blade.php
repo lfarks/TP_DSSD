@@ -22,6 +22,16 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @if (session('message'))
+                    <div class="alert alert-success">
+                      {{ session('message') }}
+                    </div>
+                    @endif
+                    @if (session('error'))
+                    <div class="alert alert-danger">
+                      {{ session('error') }}
+                    </div>
+                    @endif
 
                     You are logged in!<br>
                     <div class="col-md-4">
