@@ -14,6 +14,9 @@ class IncidenciaController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        //$this->middleware('role:user')->only('create');
+        $this->middleware('role:empleado,user')->except('show','create','store');//only('listAll');
+        $this->middleware('role:cliente');
     }
 
     public function create()
@@ -56,7 +59,7 @@ class IncidenciaController extends Controller
         $inc->cantObjetos = $request["cantObj"];
         $inc->descripcion = $request["desc"];
         $inc->motivo = $request["motivo"];
-        $inc->numExpediente = random_int(1,1000000000);
+        $inc->numExpediente = -1;//random_int(1,1000000000);
 
         //$exist->incidencias()->save($inc);
         $user->client->incidencias()->save($inc);
@@ -72,8 +75,13 @@ class IncidenciaController extends Controller
       $user = Auth::user();
 
       //$incidencias = Incidencia::where('client_id', $user->client->numCli);
-      $incidencias = $user->client->incidencias;
+      $incidencias = Incidencias::where('user_id', '=', $user->id)->first();
       return view('incidencia.list', ['incidencias'=> $incidencias, 'num_cli'=>$user->client->numCli]);
       //return View::make('incidencia.list')->with('incidencias', $incidencias);
+    }
+    public function listAll()
+    {
+      $incidencias = Incidencias::All();
+      return view('incidencia.list', ['incidencias'=> $incidencias]);
     }
 }

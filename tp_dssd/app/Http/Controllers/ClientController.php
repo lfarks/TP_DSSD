@@ -14,8 +14,9 @@ class ClientController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('role:user')->only('create','store');
         $this->middleware('role:empleado')->only('show');
-        $this->middleware('role:cliente')->except('show');
+        $this->middleware('role:cliente')->except('create','show','store');
     }
 
     public function create()
@@ -54,6 +55,7 @@ class ClientController extends Controller
         }
         else{
           $role_client = Role::where('name', 'cliente')->first();
+          $roleId = Role::where('id', 'user')->first();
 
           $cli = new Client;
           $cli->name = $request["nom"];
@@ -61,6 +63,7 @@ class ClientController extends Controller
           $cli->numCli = $request["numCli"];
           $usr = User::find($user->id);
           $usr->client()->save($cli);
+          $user->roles()->detach($roleId);
           $usr->roles()->attach($role_client);
           //
 

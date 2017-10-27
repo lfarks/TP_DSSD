@@ -17,7 +17,7 @@ class CheckRole
     public function handle($request, Closure $next, $role)
     {
         if (! $request->user()->hasAnyRole($role)) {
-          return redirect()->route('home')->with('error', 'No tiene permisos para acceder a esta página.');
+          return redirect()->route('home')->with('error', 'No tiene permisos para acceder a esta página, debes ser '.$role.', sos '.$request->user()->roles()->first()['name']);
 
         }
 

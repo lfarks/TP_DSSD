@@ -21,8 +21,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/clientes', 'ClientController@show')->name('allCli');
 Route::get('/client/create', 'ClientController@create')->name('newCli');
-Route::post('/client', 'ClientController@store');
+Route::post('/client', 'ClientController@store')->name('listCli');
 
 Route::get('/incidencias', 'IncidenciaController@show')->name('allInc');
+Route::get('/incidencias/all', 'IncidenciaController@listAll')->name('allIncs');
 Route::get('/incidencia/create', 'IncidenciaController@create')->name('newInc');
-Route::post('/incidencia', 'IncidenciaController@store');
+Route::post('/incidencia', 'IncidenciaController@store')->name('listInc');

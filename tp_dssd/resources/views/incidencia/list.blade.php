@@ -42,7 +42,11 @@
                           @foreach($incidencias as $key => $value)
                               <tr>
                                   <td>{{ $num_cli }}</td>
-                                  <td>{{ $value->numExpediente }}</td>
+                                  @if ( $value->numExpediente != -1)
+                                    <td>{{ $value->numExpediente }}</td>
+                                  @else
+                                    <td>Pendiente de evaluacion</td>
+                                    @endif
                                   <td>{{ $value->cantObjetos }}</td>
                                   <td>{{ $value->descripcion }}</td>
                                   <td>{{ $value->motivo }}</td>

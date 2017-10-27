@@ -50,7 +50,8 @@
                         <div class="panel-body">
                           <div class="links">
                             <a href="{{ route('newInc') }}">Cargar incidencia</a><br>
-                            <a href="{{ route('allInc') }}">Ver mis incidencias</a>
+                            <a href="{{ route('allInc') }}">Ver mis incidencias</a><br>
+                            <a href="{{ route('allIncs') }}">Ver incs. de todos los clientes</a>
                           </div>
                         </div>
                       </div>
