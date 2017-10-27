@@ -22,7 +22,7 @@ class CreateIncidenciaTable extends Migration
           $table->text('descripcion');
           $table->text('motivo');
           $table->text('tipo');
-          $table->bigInteger('numExpediente')->unique();
+          $table->bigInteger('numExpediente')->unique()->nullable();
           $table->timestamps();
         });
     }
