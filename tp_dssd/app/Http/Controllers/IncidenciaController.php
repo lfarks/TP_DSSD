@@ -15,8 +15,8 @@ class IncidenciaController extends Controller
     {
         $this->middleware('auth');
         //$this->middleware('role:user')->only('create');
-        $this->middleware('role:empleado,user')->except('show','create','store');//only('listAll');
-        $this->middleware('role:cliente');
+        $this->middleware('role:empleado')->only('listAll');//except('show','create','store');
+        $this->middleware('role:cliente')->except('listAll');
     }
 
     public function create()
@@ -82,7 +82,9 @@ class IncidenciaController extends Controller
     }
     public function listAll()
     {
-      $incidencias = Incidencias::All();
-      return view('incidencia.list', ['incidencias'=> $incidencias]);
+      //$incidencias = Incidencia::All();
+      $incidencias = Incidencia::select('*')//fecha, cantObjetos, descripcion, motivo, tipo, numExpediente, clients.numCli')
+        ->join('clients', 'clients.id', '=', 'incidencias.client_id')->get();
+      return view('incidencia.listAll', ['incidencias'=> $incidencias]);
     }
 }
