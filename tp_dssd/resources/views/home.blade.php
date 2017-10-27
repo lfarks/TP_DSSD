@@ -39,7 +39,8 @@
                         <div class="panel-heading"><i class="fa fa-user" aria-hidden="true"></i> Cliente</div>
                         <div class="panel-body">
                           <div class="links">
-                            <a href="{{ route('newCli') }}"> Cargar datos de cliente</a>
+                            <a href="{{ route('newCli') }}"> Cargar datos de cliente</a><br>
+                            <a href="{{ route('allCli') }}"> Ver datos de todos los cliente</a>
                           </div>
                         </div>
                       </div>
