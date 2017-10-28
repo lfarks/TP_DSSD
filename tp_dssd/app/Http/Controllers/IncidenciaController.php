@@ -9,6 +9,9 @@ use Auth;
 use App\Incidencia;
 use App\Client;
 use App\User;
+
+use Illuminate\Support\Facades\Storage;
+
 class IncidenciaController extends Controller
 {
     public function __construct()
@@ -76,6 +79,7 @@ class IncidenciaController extends Controller
 
       //$incidencias = Incidencia::where('client_id', $user->client->numCli);
       //$incidencias = Incidencias::where('user_id', '=', $user->id)->first();
+      //Storage::disk('dropbox')->put('file.txt', 'Test subiendo archivos a dropbox ');
       $incidencias = $user->client->incidencias;
       return view('incidencia.list', ['incidencias'=> $incidencias, 'num_cli'=>$user->client->numCli]);
       //return View::make('incidencia.list')->with('incidencias', $incidencias);
