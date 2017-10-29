@@ -18,8 +18,8 @@ class IncidenciaController extends Controller
     {
         $this->middleware('auth');
         //$this->middleware('role:user')->only('create');
-        $this->middleware('role:empleado')->only('listAll');//except('show','create','store');
-        $this->middleware('role:cliente')->except('listAll');
+        $this->middleware('role:empleado')->only('listAll','createFoto','upload');//except('show','create','store');
+        $this->middleware('role:cliente')->except('listAll','createFoto','upload');
     }
 
     public function create()
@@ -90,5 +90,16 @@ class IncidenciaController extends Controller
       $incidencias = Incidencia::select('*')//fecha, cantObjetos, descripcion, motivo, tipo, numExpediente, clients.numCli')
         ->join('clients', 'clients.id', '=', 'incidencias.client_id')->get();
       return view('incidencia.listAll', ['incidencias'=> $incidencias]);
+    }
+
+    public function createFoto($numExp)
+    {
+      return view('incidencia.uploadFotos', ['numExp' => $numExp]);
+    }
+
+    public function upload($numExp, Request $request)
+    {
+      $path = $request->file('foto')->store($numExp.'/', 'dropbox');
+      return "Foto cargada en ".$path;
     }
 }

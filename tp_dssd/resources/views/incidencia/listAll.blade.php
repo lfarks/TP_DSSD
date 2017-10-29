@@ -52,6 +52,10 @@
                                   <td>{{ $value->motivo }}</td>
                                   <td>{{ $value->tipo }}</td>
                                   <td>{{ $value->fecha }}</td>
+                                  <td><a href="{{ URL::to('/incidencia/' . $value->numExpediente . '/fotos/create') }}"><button class="btn btn-info">
+                                        <i class="fa fa-file-photo-o" aria-hidden="true"></i>
+                                         Subir fotos</button></a>
+                                  </td>
                                 </tr>
                         @endforeach
                         </tbody>

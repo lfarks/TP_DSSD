@@ -27,3 +27,5 @@ Route::get('/incidencias', 'IncidenciaController@show')->name('allInc');
 Route::get('/incidencias/all', 'IncidenciaController@listAll')->name('allIncs');
 Route::get('/incidencia/create', 'IncidenciaController@create')->name('newInc');
 Route::post('/incidencia', 'IncidenciaController@store')->name('listInc');
+Route::get('/incidencia/{exp}/fotos/create', 'IncidenciaController@createFoto')->name('newFotoInc');
+Route::post('/incidencia/{exp}/fotos/upload', 'IncidenciaController@upload')->name('upFotoInc');
