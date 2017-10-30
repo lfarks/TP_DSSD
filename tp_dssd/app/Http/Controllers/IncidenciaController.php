@@ -101,14 +101,21 @@ class IncidenciaController extends Controller
     {
       $messages = [
         'required' => 'El campo :attribute es obligatorio.',
-        'image' => 'Seleccione un formato de imagen válido (png, jpg, jpeg).',
+        'image' => 'Seleccione un archivo de imagen.',
         'mimes' => 'Seleccione un formato de imagen válido (png, jpg, jpeg)'
       ];
       $validator = $request->validate([
-        'image' => 'required|mimes:png,jpg,jpeg|image'
+        'fotos' => 'required',
+        'fotos.*' => 'required|mimes:png,jpg,jpeg|image'
       ], $messages);
-
-      $path = $request->file('foto')->store($numExp.'/', 'dropbox');
-      return "Foto cargada en ".$path;
-    }
+      //Session::flash('warning', 'Espere mientras se cargan las fotos. Esto puede demorar un rato.');
+      //if(!empty($files))
+      foreach($request->file('fotos') as $file)
+      {
+          $path = $file->store($numExp.'/', 'dropbox');
+      }
+      // //return "Foto cargada en ".$path;
+      Session::flash('message', 'Se cargaron las fotos con exito!');
+      return view('incidencia.uploadFotos', ['numExp' => $numExp]);
+      }
 }
