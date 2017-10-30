@@ -40,6 +40,7 @@
                         <div class="panel-body">
                           <div class="links">
                             <a href="{{ route('newCli') }}"> Cargar datos de cliente</a><br>
+                            <a href="{{ route('editCli') }}"> modificar mis datos de cliente</a><br>
                             <a href="{{ route('allCli') }}"> Ver datos de todos los cliente</a>
                           </div>
                         </div>

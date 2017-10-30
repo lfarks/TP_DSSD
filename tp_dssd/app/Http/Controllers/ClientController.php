@@ -78,4 +78,45 @@ class ClientController extends Controller
       $clients = Client::All();
       return view('client.list', ['clientes'=> $clients]);
     }
+
+    public function edit()
+    {
+        // get the nerd
+        $user = Auth::user();
+        $cli = Client::find($user->client->id);
+
+        // show the edit form and pass the nerd
+        return view('client.edit')->with('cli', $cli);
+    }
+
+    public function update(Request $request)
+    {
+      $messages = [
+        'required' => 'El campo :attribute es obligatorio.',
+        'string' => 'El campo :attribute debe ser de caracteres.',
+        'max' => 'El campo :attribute no debe excede la cantidad máxima de caracteres.',
+        'date' => 'El campo :attribute debe tener un formato de fecha válido (año-mes-día).',
+        'integer' => 'El campo :attribute debe contener sólo números.',
+        'unique' => 'El campo :attribute se encuentra duplicado, debe ser único.'
+      ];
+      $user = Auth::user();
+      $cli = Client::find($user->client->id);
+
+      $validator = $request->validate([
+        'nom' => 'required|string|max:100',
+        'ape' => 'required|string|max:50',
+        'numCli' => 'required|integer|unique:clients,numCli,'.$cli->id,
+      ], $messages);
+
+
+      $cli->name = $request["nom"];
+      $cli->lastname = $request["ape"];
+      if ($cli->numCli != $request["numCli"]){
+          $cli->numCli = $request["numCli"];
+      }
+      $cli->save();
+
+        Session::flash('message', 'Se cargaron con exito los datos del cliente!');
+        return Redirect::to('client/edit');
+    }
 }
