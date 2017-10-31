@@ -84,6 +84,16 @@ class IncidenciaController extends Controller
       return view('incidencia.list', ['incidencias'=> $incidencias, 'num_cli'=>$user->client->numCli]);
       //return View::make('incidencia.list')->with('incidencias', $incidencias);
     }
+
+    public function showOne($id)
+    {
+      $user = Auth::user();
+      $inc = Incidencia::find($id);
+
+      return view('incidencia.show', ['inc'=> $inc, 'num_cli'=>$user->client->numCli]);
+      //return View::make('incidencia.list')->with('incidencias', $incidencias);
+    }
+
     public function listAll()
     {
       //$incidencias = Incidencia::All();

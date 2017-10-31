@@ -111,9 +111,7 @@ class ClientController extends Controller
 
       $cli->name = $request["nom"];
       $cli->lastname = $request["ape"];
-      if ($cli->numCli != $request["numCli"]){
-          $cli->numCli = $request["numCli"];
-      }
+      $cli->numCli = $request["numCli"];
       $cli->save();
 
         Session::flash('message', 'Se cargaron con exito los datos del cliente!');

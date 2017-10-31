@@ -32,8 +32,8 @@
                                   <td>Num. cliente</td>
                                   <td>Num. expediente</td>
                                   <td>CantObjetos</td>
-                                  <td>Descripcion</td>
-                                  <td>Motivo</td>
+                                  <!--<td>Descripcion</td>
+                                  <td>Motivo</td>-->
                                   <td>Tipo</td>
                                   <td>Fecha</td>
                               </tr>
@@ -48,10 +48,20 @@
                                     <td>Pendiente de evaluacion</td>
                                     @endif
                                   <td>{{ $value->cantObjetos }}</td>
-                                  <td>{{ $value->descripcion }}</td>
-                                  <td>{{ $value->motivo }}</td>
+                                  <!--<td>{{ $value->descripcion }}</td>
+                                  <td>{{ $value->motivo }}</td>-->
                                   <td>{{ $value->tipo }}</td>
                                   <td>{{ $value->fecha }}</td>
+                                  <td>
+                                     <!--{{ Form::open(array('url' => 'nerds/' . $value->id, 'class' => 'pull-right')) }}
+                                         {{ Form::hidden('_method', 'DELETE') }}
+                                         {{ Form::submit('Eliminar', array('class' => 'btn btn-danger')) }}
+                                     {{ Form::close() }}-->
+                                     <a title="Ver más" class="btn btn-small" href="{{ URL::to('incidencia/' . $value->id) }}">
+                                       <i class="fa fa-eye" style="font-size:24px;color:blue"></i> </a>
+                                     <a title="Editar" class="btn btn-small" href="{{ URL::to('incidencia/' . $value->id . '/edit') }}">
+                                       <i class="fa fa-edit" style="font-size:24px;color:red"></i></a>
+                                  </td>
                                 </tr>
                         @endforeach
                         </tbody>
