@@ -58,7 +58,7 @@
                                          {{ Form::submit('Eliminar', array('class' => 'btn btn-danger')) }}
                                      {{ Form::close() }}-->
                                      <a title="Ver más" class="btn btn-small" href="{{ URL::to('incidencia/' . $value->id) }}">
-                                       <i class="fa fa-eye" style="font-size:24px;color:blue"></i> </a>
+                                       <i class="fa fa-eye" style="font-size:24px;color:green"></i> </a>
                                      <a title="Editar" class="btn btn-small" href="{{ URL::to('incidencia/' . $value->id . '/edit') }}">
                                        <i class="fa fa-edit" style="font-size:24px;color:red"></i></a>
                                   </td>

@@ -14,9 +14,9 @@ class ClientController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('role:user')->only('create','store');
-        $this->middleware('role:empleado')->only('show');
-        $this->middleware('role:cliente')->except('create','show','store');
+        //$this->middleware('role:user')->only('create','store');
+        //$this->middleware('role:empleado')->only('show');
+        //$this->middleware('role:cliente')->except('create','show','store');
     }
 
     public function create()

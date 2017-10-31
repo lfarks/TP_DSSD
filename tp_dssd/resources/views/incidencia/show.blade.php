@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-  <a href="{{ url('/incidencias') }}">Volver</a>
+  <a href="{{ url('/incidencias' . $url_volver ) }}">Volver</a>
     @if (count(session('errors')) > 0)
         <div class="alert alert-danger">
           @foreach (session('errors')->all() as $error)
@@ -26,7 +26,7 @@
                   <div class="panel panel-default">
                       <div class="panel-heading">Detalles del incidentes del usuario</div>
                       <div class="panel-body">
-                        <h1>Mostrando incidencia de {{ $num_cli }}</h1>
+                        <h1>Mostrando incidencia</h1>
                           <div class="jumbotron ">
                               <h2>
                                 <strong>Num. expediente:</strong>

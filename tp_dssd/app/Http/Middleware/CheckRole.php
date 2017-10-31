@@ -14,10 +14,10 @@ class CheckRole
      * @param  string  $role
      * @return mixed
      */
-    public function handle($request, Closure $next, $role)
+    public function handle($request, Closure $next, ...$role)
     {
         if (! $request->user()->hasAnyRole($role)) {
-          return redirect()->route('home')->with('error', 'No tiene permisos para acceder a esta página, debes ser '.$role.', sos '.$request->user()->roles()->first()['name']);
+          return redirect()->route('home')->with('error', 'No tiene permisos para acceder a esta página, debes ser '.implode(",",$role).', sos '.$request->user()->roles()->first()['name']);
 
         }
 

@@ -18,8 +18,10 @@ class IncidenciaController extends Controller
     {
         $this->middleware('auth');
         //$this->middleware('role:user')->only('create');
-        $this->middleware('role:empleado')->only('listAll','createFoto','upload');//except('show','create','store');
-        $this->middleware('role:cliente')->except('listAll','createFoto','upload');
+        //$this->middleware('role:empleado,cliente');
+        //$this->middleware('role:empleado')->except('show','create','store','edit','update');
+        //$this->middleware('role:empleado')->only('listAll','createFoto','upload');//except('show','create','store');
+        //$this->middleware('role:cliente')->except('listAll','createFoto','upload');
     }
 
     public function create()
@@ -90,7 +92,13 @@ class IncidenciaController extends Controller
       $user = Auth::user();
       $inc = Incidencia::find($id);
 
-      return view('incidencia.show', ['inc'=> $inc, 'num_cli'=>$user->client->numCli]);
+      if ($user->hasRole('cliente')){
+        $url = '';
+      }else{
+        $url = '/all';
+      }
+
+      return view('incidencia.show', ['inc'=> $inc, 'url_volver'=>$url]);//, 'num_cli'=>$user->client->numCli]);
       //return View::make('incidencia.list')->with('incidencias', $incidencias);
     }
 

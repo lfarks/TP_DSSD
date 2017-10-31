@@ -29,7 +29,7 @@
           <div class="row">
               <div class="col-md-12">
                   <div class="panel panel-default">
-                      <div class="panel-heading">Formulario del incidente</div>
+                      <div class="panel-heading">Cargar fotos en Dropbox</div>
                       <div class="panel-body">
                         {{ Form::open(array('id'=>'upload','action' => ['IncidenciaController@upload', 'id'=>$numExp], 'files' => true)) }}
                         <div class="form-group col-sm-6">

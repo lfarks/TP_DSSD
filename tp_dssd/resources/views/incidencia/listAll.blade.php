@@ -32,8 +32,8 @@
                                   <td>Num. cliente</td>
                                   <td>Num. expediente</td>
                                   <td>CantObjetos</td>
-                                  <td>Descripcion</td>
-                                  <td>Motivo</td>
+                                  <!--<td>Descripcion</td>
+                                  <td>Motivo</td>-->
                                   <td>Tipo</td>
                                   <td>Fecha</td>
                               </tr>
@@ -48,13 +48,15 @@
                                     <td>Pendiente de evaluacion</td>
                                     @endif
                                   <td>{{ $value->cantObjetos }}</td>
-                                  <td>{{ $value->descripcion }}</td>
-                                  <td>{{ $value->motivo }}</td>
+                                  <!--<td>{{ $value->descripcion }}</td>
+                                  <td>{{ $value->motivo }}</td>-->
                                   <td>{{ $value->tipo }}</td>
                                   <td>{{ $value->fecha }}</td>
-                                  <td><a href="{{ URL::to('/incidencia/' . $value->numExpediente . '/fotos/create') }}"><button class="btn btn-info">
-                                        <i class="fa fa-file-photo-o" aria-hidden="true"></i>
-                                         Subir fotos</button></a>
+                                  <td>
+                                    <a title="Ver más" class="btn btn-small" href="{{ URL::to('incidencia/' . $value->id) }}">
+                                      <i class="fa fa-eye" style="font-size:24px;color:green"></i> </a>
+                                    <a title="Subir fotos" class="btn btn-small" href="{{ URL::to('/incidencia/' . $value->numExpediente . '/fotos/create') }}">
+                                        <i class="fa fa-dropbox" style="font-size:24px;color:blue"></i></a>
                                   </td>
                                 </tr>
                         @endforeach
