@@ -94,6 +94,43 @@ class IncidenciaController extends Controller
       //return View::make('incidencia.list')->with('incidencias', $incidencias);
     }
 
+    public function edit($id)
+    {
+        $inc = Incidencia::find($id);
+        return view('incidencia.edit')->with('inc', $inc);
+    }
+
+    public function update($id, Request $request)
+    {
+      $messages = [
+        'required' => 'El campo :attribute es obligatorio.',
+        'string' => 'El campo :attribute debe ser de caracteres.',
+        'max' => 'El campo :attribute no debe excede la cantidad máxima de caracteres.',
+        'date' => 'El campo :attribute debe tener un formato de fecha válido (año-mes-día).',
+        'integer' => 'El campo :attribute debe contener sólo números.',
+        'unique' => 'El campo :attribute se encuentra duplicado, debe ser único.'
+      ];
+      $validator = $request->validate([
+        'tipo' => 'required|string|max:255',
+        'fecha' => 'required|date',
+        'cantObj' => 'required|integer',
+        'desc' => 'required|string',
+        'motivo' => 'required|string',
+      ], $messages);
+
+      $inc = Incidencia::find($id);
+      $inc->tipo = $request["tipo"];
+      $inc->fecha = $request["fecha"];
+      $inc->cantObjetos = $request["cantObj"];
+      $inc->descripcion = $request["desc"];
+      $inc->motivo = $request["motivo"];
+
+      $inc->save();
+
+      Session::flash('message', 'Reporte de incidencia actualizado con exito!');
+      return Redirect::to('incidencias');
+    }
+
     public function listAll()
     {
       //$incidencias = Incidencia::All();

@@ -31,4 +31,5 @@ Route::get('/incidencia/create', 'IncidenciaController@create')->name('newInc');
 Route::post('/incidencia', 'IncidenciaController@store')->name('listInc');
 Route::get('/incidencia/{id}', 'IncidenciaController@showOne')->name('showInc');
 Route::get('/incidencia/{id}/edit', 'IncidenciaController@edit')->name('editInc');
+Route::put('/incidencia/{id}/update', 'IncidenciaController@update')->name('updateInc');
 Route::post('/incidencia/{exp}/fotos/upload', 'IncidenciaController@upload')->name('upFotoInc');

@@ -24,7 +24,7 @@
           <div class="row">
               <div class="col-md-12">
                   <div class="panel panel-default">
-                      <div class="panel-heading">Listado de incidentes del usuario</div>
+                      <div class="panel-heading">Detalles del incidentes del usuario</div>
                       <div class="panel-body">
                         <h1>Mostrando incidencia de {{ $num_cli }}</h1>
                           <div class="jumbotron ">

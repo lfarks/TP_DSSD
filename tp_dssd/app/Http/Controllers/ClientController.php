@@ -81,11 +81,9 @@ class ClientController extends Controller
 
     public function edit()
     {
-        // get the nerd
         $user = Auth::user();
         $cli = Client::find($user->client->id);
 
-        // show the edit form and pass the nerd
         return view('client.edit')->with('cli', $cli);
     }
 
