@@ -44,7 +44,9 @@
                                   <strong>Tipo:</strong> {{ $inc->tipo }}<br>
                                   <strong>Fecha:</strong> {{ $inc->fecha }}<br>
                               </p>
-                              <a class="btn btn-small" href="{{ URL::to('incidencia/' . $inc->id . '/edit') }}"><i class="fa fa-edit" style="font-size:48px;color:red"></i> Editar</a>
+                              @if(Auth::user()->hasRole('cliente'))
+                                <a class="btn btn-small" href="{{ URL::to('incidencia/' . $inc->id . '/edit') }}"><i class="fa fa-edit" style="font-size:48px;color:red"></i> Editar</a>
+                              @endif
                           </div>
                     </div>
                   </div>

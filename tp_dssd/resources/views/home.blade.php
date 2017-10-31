@@ -39,9 +39,15 @@
                         <div class="panel-heading"><i class="fa fa-user" aria-hidden="true"></i> Cliente</div>
                         <div class="panel-body">
                           <div class="links">
-                            <a href="{{ route('newCli') }}"> Cargar datos de cliente</a><br>
-                            <a href="{{ route('editCli') }}"> modificar mis datos de cliente</a><br>
-                            <a href="{{ route('allCli') }}"> Ver datos de todos los cliente</a>
+                            @if(Auth::user()->hasRole('user'))
+                              <a href="{{ route('newCli') }}"> Cargar datos de cliente</a><br>
+                            @endif
+                            @if(Auth::user()->hasRole('cliente'))
+                              <a href="{{ route('editCli') }}"> modificar mis datos de cliente</a><br>
+                            @endif
+                            @if(Auth::user()->hasRole('empleado'))
+                              <a href="{{ route('allCli') }}"> Ver datos de todos los cliente</a>
+                            @endif
                           </div>
                         </div>
                       </div>
@@ -51,9 +57,13 @@
                         <div class="panel-heading"><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Incidencias</div>
                         <div class="panel-body">
                           <div class="links">
-                            <a href="{{ route('newInc') }}">Cargar incidencia</a><br>
-                            <a href="{{ route('allInc') }}">Ver mis incidencias</a><br>
-                            <a href="{{ route('allIncs') }}">Ver incs. de todos los clientes</a>
+                            @if(Auth::user()->hasRole('cliente'))
+                              <a href="{{ route('newInc') }}">Cargar incidencia</a><br>
+                              <a href="{{ route('allInc') }}">Ver mis incidencias</a><br>
+                            @endif
+                            @if(Auth::user()->hasRole('empleado'))
+                              <a href="{{ route('allIncs') }}">Ver incs. de todos los clientes</a>
+                            @endif
                           </div>
                         </div>
                       </div>
