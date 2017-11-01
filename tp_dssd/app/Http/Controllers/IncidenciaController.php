@@ -82,9 +82,10 @@ class IncidenciaController extends Controller
       //$incidencias = Incidencia::where('client_id', $user->client->numCli);
       //$incidencias = Incidencias::where('user_id', '=', $user->id)->first();
       //Storage::disk('dropbox')->put('file.txt', 'Test subiendo archivos a dropbox ');
-      $inc = Incidencia::paginate(5);
+      $cli = $user->client;
+      $inc = Incidencia::where('client_id', $cli->id)->paginate(5);
       //$incidencias = $user->client->incidencias;
-      return view('incidencia.list', ['incidencias'=> $inc, 'num_cli'=>$user->client->numCli]);
+      return view('incidencia.list', ['incidencias'=> $inc, 'num_cli'=>$cli->numCli]);
       //return View::make('incidencia.list')->with('incidencias', $incidencias);
     }
 
