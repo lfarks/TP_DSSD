@@ -75,7 +75,7 @@ class ClientController extends Controller
     public function show(Request $request)
     {
       //return "Filtrando empleados";
-      $clients = Client::All();
+      $clients = Client::paginate(5);
       return view('client.list', ['clientes'=> $clients]);
     }
 

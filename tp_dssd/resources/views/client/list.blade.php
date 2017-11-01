@@ -45,6 +45,9 @@
                         </tbody>
                       </table>
                     </div>
+                    <div class="panel-footer">
+                        {{ $clientes->render() }}
+                    </div>
                   </div>
               </div>
           </div>

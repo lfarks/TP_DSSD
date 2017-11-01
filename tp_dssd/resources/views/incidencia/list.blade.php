@@ -67,6 +67,9 @@
                         </tbody>
                       </table>
                     </div>
+                    <div class="panel-footer">
+                        {{ $incidencias->render() }}
+                    </div>
                   </div>
               </div>
           </div>

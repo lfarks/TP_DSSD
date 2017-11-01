@@ -82,8 +82,9 @@ class IncidenciaController extends Controller
       //$incidencias = Incidencia::where('client_id', $user->client->numCli);
       //$incidencias = Incidencias::where('user_id', '=', $user->id)->first();
       //Storage::disk('dropbox')->put('file.txt', 'Test subiendo archivos a dropbox ');
-      $incidencias = $user->client->incidencias;
-      return view('incidencia.list', ['incidencias'=> $incidencias, 'num_cli'=>$user->client->numCli]);
+      $inc = Incidencia::paginate(5);
+      //$incidencias = $user->client->incidencias;
+      return view('incidencia.list', ['incidencias'=> $inc, 'num_cli'=>$user->client->numCli]);
       //return View::make('incidencia.list')->with('incidencias', $incidencias);
     }
 
@@ -142,14 +143,26 @@ class IncidenciaController extends Controller
     public function listAll()
     {
       //$incidencias = Incidencia::All();
-      $incidencias = Incidencia::select('*')//fecha, cantObjetos, descripcion, motivo, tipo, numExpediente, clients.numCli')
-        ->join('clients', 'clients.id', '=', 'incidencias.client_id')->get();
+      //$incidencias = Incidencia::select('*')//fecha, cantObjetos, descripcion, motivo, tipo, numExpediente, clients.numCli')
+      //  ->join('clients', 'clients.id', '=', 'incidencias.client_id')->get();
+      $incidencias = Incidencia::paginate(5);
       return view('incidencia.listAll', ['incidencias'=> $incidencias]);
     }
 
     public function createFoto($numExp)
     {
-      return view('incidencia.uploadFotos', ['numExp' => $numExp]);
+      /*$files = Storage::disk('dropbox')->files($numExp.'/');
+      //$fi = Storage::disk('dropbox')->get($files[2]);
+      //dd($files);
+      $furl = array();
+      $adapter = \Storage::disk('dropbox')->getAdapter();
+      $client = $adapter->getClient();
+      foreach ($files as $f){
+        //dd($f);
+        array_push($furl,$client->getTemporaryLink($f));
+      }
+      //dd($furl);*/
+      return view('incidencia.uploadFotos', ['numExp' => $numExp]);//, 'files'=>$furl]);
     }
 
     public function upload($numExp, Request $request)

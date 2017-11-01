@@ -41,7 +41,7 @@
                           <tbody>
                           @foreach($incidencias as $key => $value)
                               <tr>
-                                  <td>{{ $value->numCli }}</td>
+                                  <td>{{ $value->client->numCli }}</td>
                                   @if ( $value->numExpediente != null)
                                     <td>{{ $value->numExpediente }}</td>
                                   @else
@@ -62,6 +62,9 @@
                         @endforeach
                         </tbody>
                       </table>
+                      <div class="panel-footer">
+                          {{ $incidencias->render() }}
+                      </div>
                     </div>
                   </div>
               </div>
