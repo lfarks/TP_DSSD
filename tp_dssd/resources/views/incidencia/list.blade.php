@@ -35,6 +35,7 @@
                                   <!--<td>Descripcion</td>
                                   <td>Motivo</td>-->
                                   <td>Tipo</td>
+                                  <td>Estado</td>
                                   <td>Fecha</td>
                               </tr>
                           </thead>
@@ -45,12 +46,13 @@
                                   @if ( $value->numExpediente != null)
                                     <td>{{ $value->numExpediente }}</td>
                                   @else
-                                    <td>Pendiente de evaluacion</td>
+                                    <td title="Se asignará uno cuando sea evaluado por un empleado">Aún sin asignar</td>
                                     @endif
                                   <td>{{ $value->cantObjetos }}</td>
                                   <!--<td>{{ $value->descripcion }}</td>
                                   <td>{{ $value->motivo }}</td>-->
                                   <td>{{ $value->tipo }}</td>
+                                  <td>{{ $value->estado }}</td>
                                   <td>{{ $value->fecha }}</td>
                                   <td>
                                      <!--{{ Form::open(array('url' => 'nerds/' . $value->id, 'class' => 'pull-right')) }}

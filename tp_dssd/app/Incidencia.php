@@ -8,7 +8,7 @@ class Incidencia extends Model
 {
 
   protected $fillable = [
-      'cliente', 'fecha', 'cantObj', 'desc', 'motivo'
+      'cliente', 'fecha', 'cantObj', 'desc', 'motivo', 'estado'
   ];
   protected $rules = [
       'cliente' => ['required'],
@@ -16,7 +16,8 @@ class Incidencia extends Model
       'cantObj' => ['required|integer'],
       'desc' => ['required|string'],
       'motivo' => ['required|string'],
-      'tipo' => ['required|string']
+      'tipo' => ['required|string'],
+      'estado' => ['string']
   ];
 
   public function client()

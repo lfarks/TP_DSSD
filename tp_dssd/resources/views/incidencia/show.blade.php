@@ -33,7 +33,7 @@
                               @if ( $inc->numExpediente != null)
                                 <td>{{ $inc->numExpediente }}</td>
                               @else
-                                <td>Pendiente de evaluacion</td>
+                                <td>Aún sin asignar</td>
                                 @endif
                               </h2>
                               <p>
@@ -42,6 +42,7 @@
                                   <strong>Descripcion:</strong> {{ $inc->descripcion }}<br>
                                   <strong>Motivo:</strong> {{ $inc->motivo }}<br>
                                   <strong>Tipo:</strong> {{ $inc->tipo }}<br>
+                                  <strong>Estado:</strong> {{ $inc->estado }}<br>
                                   <strong>Fecha:</strong> {{ $inc->fecha }}<br>
                               </p>
                               @if(Auth::user()->hasRole('cliente'))

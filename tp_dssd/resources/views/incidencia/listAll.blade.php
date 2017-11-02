@@ -35,6 +35,7 @@
                                   <!--<td>Descripcion</td>
                                   <td>Motivo</td>-->
                                   <td>Tipo</td>
+                                  <td>Estado</td>
                                   <td>Fecha</td>
                               </tr>
                           </thead>
@@ -45,18 +46,21 @@
                                   @if ( $value->numExpediente != null)
                                     <td>{{ $value->numExpediente }}</td>
                                   @else
-                                    <td>Pendiente de evaluacion</td>
+                                    <td title="Se asignará uno cuando sea evaluado por un empleado">Aún sin asignar</td>
                                     @endif
                                   <td>{{ $value->cantObjetos }}</td>
                                   <!--<td>{{ $value->descripcion }}</td>
                                   <td>{{ $value->motivo }}</td>-->
                                   <td>{{ $value->tipo }}</td>
+                                  <td>{{ $value->estado }}</td>
                                   <td>{{ $value->fecha }}</td>
                                   <td>
                                     <a title="Ver más" class="btn btn-small" href="{{ URL::to('incidencia/' . $value->id) }}">
                                       <i class="fa fa-eye" style="font-size:24px;color:green"></i> </a>
-                                    <a title="Subir fotos" class="btn btn-small" href="{{ URL::to('/incidencia/' . $value->numExpediente . '/fotos/create') }}">
-                                        <i class="fa fa-dropbox" style="font-size:24px;color:blue"></i></a>
+                                      @if ( $value->numExpediente != null)
+                                        <a title="Subir fotos" class="btn btn-small" href="{{ URL::to('/incidencia/' . $value->numExpediente . '/fotos/create') }}">
+                                            <i class="fa fa-dropbox" style="font-size:24px;color:blue"></i></a>
+                                      @endif
                                   </td>
                                 </tr>
                         @endforeach

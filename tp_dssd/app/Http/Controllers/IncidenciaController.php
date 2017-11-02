@@ -64,6 +64,7 @@ class IncidenciaController extends Controller
         $inc->cantObjetos = $request["cantObj"];
         $inc->descripcion = $request["desc"];
         $inc->motivo = $request["motivo"];
+        $inc->estado = "Pendiente de evaluación";
         //$inc->numExpediente = -1;//random_int(1,1000000000);
 
         //$exist->incidencias()->save($inc);

@@ -68,7 +68,7 @@ class ClientController extends Controller
           //
 
           Session::flash('message', 'Se cargaron con exito los datos del cliente!');
-          return Redirect::to('client/create');
+          return Redirect::to('/home');
         }
       //}
     }
