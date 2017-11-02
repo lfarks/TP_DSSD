@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Objeto extends Model
 {
   protected $fillable = [
-      'nombre', 'precio', 'codigo'
+      'nombre', 'codigo'
   ];
 
   public function proveedores()
   {
-    return $this->belongsToMany('App\Proveedor');
+    return $this->belongsToMany('App\Proveedor')->withPivot('stock', 'precio');
   }
 }

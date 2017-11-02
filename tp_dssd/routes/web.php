@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+//API REST
+Route::get('/presupuesto/{codObj}/{cant}', 'ProveedorController@presupuesto');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

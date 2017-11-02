@@ -12,6 +12,6 @@ class Proveedor extends Model
 
     public function objetos()
     {
-      return $this->belongsToMany('App\Objeto');
+      return $this->belongsToMany('App\Objeto')->withPivot('stock', 'precio');
     }
 }

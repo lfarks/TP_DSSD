@@ -17,6 +17,8 @@ class CreateProveedorObjetoTable extends Migration
             $table->increments('id');
             $table->integer('proveedor_id')->unsigned();
             $table->integer('objeto_id')->unsigned();
+            $table->integer('stock');
+            $table->float('precio');
             $table->timestamps();
         });
     }

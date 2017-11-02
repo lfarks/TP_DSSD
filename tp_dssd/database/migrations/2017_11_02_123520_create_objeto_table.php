@@ -17,7 +17,6 @@ class CreateObjetoTable extends Migration
             $table->increments('id');
             $table->integer('codigo')->unique();
             $table->text('nombre');
-            $table->float('precio');
             $table->timestamps();
         });
     }

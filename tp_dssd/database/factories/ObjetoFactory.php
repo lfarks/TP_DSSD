@@ -8,6 +8,6 @@ $factory->define(App\Objeto::class, function (Faker $faker) {
   return [
       'nombre' => $faker->name,
       'codigo' => random_int(1,10000),
-      'precio' => random_int(1,1000),
+      //'precio' => random_int(1,1000),
     ];
 });
