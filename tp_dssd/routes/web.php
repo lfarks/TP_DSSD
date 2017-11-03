@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 //API REST
 Route::get('/presupuesto/{codObj}/{cant}', 'ProveedorController@presupuesto');
+Route::get('/presupuesto2/{codObj}', 'ProveedorController@presupuesto2');
 
 Auth::routes();
 
